@@ -30,6 +30,17 @@ def health():
     """GET endpoint to check API health status."""
     return jsonify({"status": "ok"}), 200
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        "message": "Customer Churn Prediction API is running.",
+        "status": "success",
+        "endpoints": {
+            "health": "/health",
+            "predict": "/predict (POST)"
+        }
+    }), 200
+    
 @app.route('/predict', methods=['POST'])
 def predict():
     """POST endpoint to predict churn for a single customer."""
